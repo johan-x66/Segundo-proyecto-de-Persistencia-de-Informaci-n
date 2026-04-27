@@ -99,7 +99,25 @@ com.mycompany.pocmedicamento.POCMedicamento
 El proyecto incluye un archivo para la creación de tablas:
 
 ```
-[Colocar script de las instrucciones SQL]
+CREATE TABLE FARMACIA (
+   NIT NUMBER(10) PRIMARY KEY,
+   RAZON_SOCIAL VARCHAR2(255),
+   REPRESENTANTE_LEGAL VARCHAR2(255),
+   DIRECCION VARCHAR2(255),
+   ESTADO VARCHAR2(2)
+);
+
+
+
+CREATE TABLE MEDICAMENTO (
+   ID NUMBER(22) PRIMARY KEY,
+   NOMBRE VARCHAR2(255),
+   GRAMAJE NUMBER(10,2),
+   PRECIO_UNITARIO NUMBER(19,2),
+   ESTADO VARCHAR(2),
+   NITFARMACIA NUMBER(10),
+   FOREIGN KEY (NITFARMACIA) REFERENCES FARMACIA(NIT)
+);
 ```
 
 La conexión a la base de datos se gestiona desde:
